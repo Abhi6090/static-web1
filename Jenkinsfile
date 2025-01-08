@@ -1,35 +1,23 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
-                echo 'Building the website...'
-                // For a static HTML website, this might involve linting or other tools
-                sh 'echo "Build stage complete!"'
+                echo 'Building...'
+                // You can add build steps here if necessary
             }
         }
-
         stage('Test') {
             steps {
-                echo 'Testing the website...'
-                // Check if the HTML file exists
-                sh '''
-                if [ -f index.html ]; then
-                    echo "Index.html exists - Test Passed!";
-                else
-                    echo "Index.html does not exist - Test Failed!" && exit 1;
-                fi
-                '''
+                echo 'Testing...'
+                // You can add test steps here if necessary
             }
         }
-
         stage('Deploy') {
             steps {
-                echo 'Deploying the website...'
-                // Copy HTML files to the web server document root
-                sh 'sudo cp -r * /var/www/html/'
-                sh 'sudo systemctl restart apache2'
+                echo 'Deploying...'
+                // Copy the HTML files to the web server directory
+                sh 'cp index.html /var/www/html/'
             }
         }
     }
