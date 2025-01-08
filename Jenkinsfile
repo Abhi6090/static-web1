@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    environment { GIT_CREDENTIALS_ID = 'Abhi6090'}
     stages {
         stage('Build') {
             steps {
